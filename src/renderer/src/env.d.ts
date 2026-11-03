@@ -1,5 +1,3 @@
-/// <reference types="vite/client" />
-
 import type { AppInfo } from '../../shared/app-info'
 
 declare global {
@@ -7,6 +5,9 @@ declare global {
     nexus: {
       app: {
         getInfo: () => Promise<AppInfo>
+      }
+      island: {
+        setExpanded: (expanded: boolean) => Promise<void>
       }
     }
   }

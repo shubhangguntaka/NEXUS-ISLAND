@@ -3,21 +3,12 @@ import { contextBridge, ipcRenderer } from 'electron'
 const nexusAPI = {
   app: {
     getInfo: () => ipcRenderer.invoke('nexus:app:get-info')
+  },
+
+  island: {
+    setExpanded: (expanded: boolean): Promise<void> =>
+      ipcRenderer.invoke('nexus:island:set-expanded', expanded)
   }
 }
 
 contextBridge.exposeInMainWorld('nexus', nexusAPI)
-
-import type { AppInfo } from '../shared/app-info'
-
-declare global {
-  interface Window {
-    nexus: {
-      app: {
-        getInfo: () => Promise<AppInfo>
-      }
-    }
-  }
-}
-
-export {}

@@ -1,8 +1,16 @@
-import { ElectronAPI } from '@electron-toolkit/preload'
+import type { AppInfo } from '../shared/app-info'
 
 declare global {
   interface Window {
-    electron: ElectronAPI
-    api: unknown
+    nexus: {
+      app: {
+        getInfo: () => Promise<AppInfo>
+      }
+      island: {
+        setExpanded: (expanded: boolean) => Promise<void>
+      }
+    }
   }
 }
+
+export {}
