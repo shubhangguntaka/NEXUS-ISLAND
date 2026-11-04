@@ -100,17 +100,22 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0;
+  min-width: 0;
 }
 
 .brand-name {
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 1.6px;
+  white-space: nowrap;
 }
 
 .brand-caption {
   color: #777e8d;
   font-size: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .status-indicator {
@@ -123,7 +128,7 @@ body {
 }
 
 .island-details {
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 10px;
   opacity: 0;
@@ -135,6 +140,7 @@ body {
 }
 
 .island-details.visible {
+  display: flex;
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;

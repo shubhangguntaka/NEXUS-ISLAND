@@ -15,11 +15,12 @@ function App(): React.JSX.Element {
 
   const toggleIsland = async (): Promise<void> => {
     const nextState = !expanded
+    setExpanded(nextState)
 
     try {
       await window.nexus.island.setExpanded(nextState)
-      setExpanded(nextState)
     } catch (err) {
+      setExpanded(!nextState)
       console.error('Island resize failed:', err)
     }
   }
